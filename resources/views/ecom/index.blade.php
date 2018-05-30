@@ -57,8 +57,8 @@
                   <h4 class="card-title">
                     <a href="{{url('product_view')}}">Item {{ $i }}</a>
                   </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  <h5>Rp 50.000</h5>
+                  <p class="card-text">Deskripsi produk batik.</p>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
