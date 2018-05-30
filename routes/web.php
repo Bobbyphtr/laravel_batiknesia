@@ -22,5 +22,5 @@ Route::get('product_view', function(){
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
-//Bob?
+
 Route::resource('product', 'ProductController');
