@@ -56,9 +56,9 @@
                       <a href="{{ URL::action('ProductController@show', $product->idProduct) }}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                       <div class="card-body">
                         <h4 class="card-title">
-                          <a href="{{URL::action('ProductController@show', $product->idProduct)}}">IDR {{ $product->namaProduk }}</a>
+                          <a href="{{URL::action('ProductController@show', $product->idProduct)}}">{{ $product->namaProduk }}</a>
                         </h4>
-                        <h5>{{ $product->harga }}</h5>
+                        <h5>IDR {{ $product->harga }}</h5>
                         <p class="card-text">{{ $product->deskripsi }}</p>
                       </div>
                       <div class="card-footer">
