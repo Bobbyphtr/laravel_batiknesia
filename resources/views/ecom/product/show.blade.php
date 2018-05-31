@@ -26,10 +26,7 @@
           <ul>
             <li>Stok     : {{$product->stock}}</li>
             <li>Dimensi  : {{$product->dimensi}}</li>
-<<<<<<< HEAD
             <li>Jenis    : namaJenis</li>
-=======
->>>>>>> 405eb5b1c43d7aa7668a6579934a0c75858fdf29
           </ul>
         </div>
 
