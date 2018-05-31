@@ -80,7 +80,7 @@
                             <label for="gambar" class="col-md-4 col-form-label text-md-right">{{ __('Product Picture') }}</label>
 
                             <div class="col-md-6">
-                                {!! Form::file('gambar') !!}
+                                <input type="file" name="gambar">
                                 @if ($errors->has('gambar'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('gambar') }}</strong>
