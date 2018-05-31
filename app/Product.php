@@ -11,7 +11,7 @@ class Product extends Model
   ];
 
   public function jenis(){
-    return $this->hasOne('App\Jenis');
+    return $this->hasOne('App\Jenis', 'idJenis');
   }
 
   public function gambar(){

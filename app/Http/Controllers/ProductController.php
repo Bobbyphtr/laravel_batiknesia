@@ -45,6 +45,14 @@ class ProductController extends Controller
             'harga' => $request->input('harga'),
         ]);
 
+        if($request->hasFile('gambar')) {
+            dd('Gambar Ada');
+            $gambarProduk = new Gambar;
+            $gambarName = $request->input('gambar')->getClientOriginalName();
+            dd($gambarName);
+            $upload_path = 'img.products';
+        }
+
         if($product) {
             return redirect()->route('product.index');
         }
