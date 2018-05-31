@@ -18,7 +18,8 @@ class ProductController extends Controller
     public function index()
     {
         $product_list = Product::all();
-        return view('ecom.index', ['product_list' => $product_list ]);
+        $gambar_list = Gambar::all();
+        return view('ecom.index', ['product_list' => $product_list, 'gambar_list' => $gambar_list]);
     }
 
     /**
@@ -51,12 +52,14 @@ class ProductController extends Controller
 
         if($request->hasFile('gambar')) {
             $gambarProduk = new Gambar;
-            $gambarName = $request->file('gambar')->getClientOriginalName();
+            $gambar = $request->file('gambar');
+            $gambarName = $gambar->getClientOriginalName().'.'.$gambar->getClientOriginalExtension();
 
-            $upload_path = 'img/products/' . $gambarName;
+            $destination_path = 'img/products';
+            $upload_path = $destination_path. "/" . $gambarName;
+            $gambar->move($destination_path, $gambarName);
 
             $gambarProduk->gambar = $upload_path;
-
             $product->gambar()->save($gambarProduk);
 
             //dd($upload_path);
@@ -79,7 +82,8 @@ class ProductController extends Controller
     {
 
         $product = Product::find($product->idProduct);
-        return view('ecom.product.show', ['product' => $product]);
+        $gambar = Gambar::find($product->idProduct);
+        return view('ecom.product.show', ['product' => $product, 'gambar' => $gambar]);
     }
 
     /**

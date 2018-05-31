@@ -53,7 +53,12 @@
                 @foreach ($product_list as $product)
                   <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                      <a href="/product/{{ $product->idProduct }}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                      @if (($gambar_list->firstWhere('idProduct', $product->idProduct) != null))
+                        <a href="/product/{{ $product->idProduct }}"><img class="card-img-top" src="{!! asset(($gambar_list->firstWhere('idProduct', $product->idProduct)->gambar)) !!}" alt=""></a>
+                      @else
+                          <a href="/product/{{ $product->idProduct }}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                      @endif
+
                       <div class="card-body">
                         <h4 class="card-title">
                           <a href="/product/{{ $product->idProduct }}">{{ $product->namaProduk }}</a>
