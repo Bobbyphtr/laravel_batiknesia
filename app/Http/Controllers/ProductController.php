@@ -36,6 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $product = Product::create([
             'namaProduk' => $request->input('namaProduct'),
             'dimensi' => $request->input('dimensi'),
@@ -55,7 +56,7 @@ class ProductController extends Controller
         }
 
         if($product) {
-            return redirect()->route('ecom.product.show', ['product' => $product->id]);
+            return redirect()->route('product.show', $product);
         }
 
         return back()->withInput();
