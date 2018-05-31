@@ -7,8 +7,9 @@
     <div class="container">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4">Product Name
-        <small>This is a product name</small>
+      <h1 class="my-4">
+        {{$product->namaProduk}}
+        <small>Jenis : {{$product->idJenis}}</small>
       </h1>
 
       <!-- Portfolio Item Row -->
@@ -19,14 +20,12 @@
         </div>
 
         <div class="col-md-4">
-          <h3 class="my-3">Project Description</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <h3 class="my-3">Project Details</h3>
+          <h3 class="my-3">Deskripsi</h3>
+          <p>{{$product->deskripsi}}</p>
+          <h3 class="my-3">IDR {{$product->harga}}</h3>
           <ul>
-            <li>Lorem Ipsum</li>
-            <li>Dolor Sit Amet</li>
-            <li>Consectetur</li>
-            <li>Adipiscing Elit</li>
+            <li>Stok     : {{$product->stock}}</li>
+            <li>Dimensi  : {{$product->dimensi}}</li>
           </ul>
         </div>
 
