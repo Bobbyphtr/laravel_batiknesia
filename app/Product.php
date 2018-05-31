@@ -19,7 +19,7 @@ class Product extends Model
   }
 
   public function gambar(){
-    return $this->hasMany('App\Gambar');
+    return $this->hasMany('App\Gambar', 'idproduct');
   }
 
   public function user(){

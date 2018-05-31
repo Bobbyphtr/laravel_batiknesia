@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Gambar;
 use Illuminate\Http\Request;
+
+use Storage;
 
 class ProductController extends Controller
 {
@@ -36,7 +39,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $product = Product::create([
             'namaProduk' => $request->input('namaProduct'),
             'dimensi' => $request->input('dimensi'),
@@ -48,11 +50,16 @@ class ProductController extends Controller
         ]);
 
         if($request->hasFile('gambar')) {
-            dd('Gambar Ada');
             $gambarProduk = new Gambar;
-            $gambarName = $request->input('gambar')->getClientOriginalName();
-            dd($gambarName);
-            $upload_path = 'img.products';
+            $gambarName = $request->file('gambar')->getClientOriginalName();
+
+            $upload_path = 'img/products/' . $gambarName;
+
+            $gambarProduk->gambar = $upload_path;
+
+            $product->gambar()->save($gambarProduk);
+
+            //dd($upload_path);
         }
 
         if($product) {
