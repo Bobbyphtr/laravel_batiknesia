@@ -18,10 +18,6 @@ class Product extends Model
     return $this->hasMany('App\Gambar');
   }
 
-  public function like(){
-    return $this->hasMany('App\Like');
-  }
-
   public function user(){
     return $this->belongsTo('App\User');
   }

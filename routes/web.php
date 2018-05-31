@@ -12,15 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('ecom/index');
-});
-
-Route::get('product_view', function(){
-  return view('ecom/product_view');
+    return view('ecom.index');
 });
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('product', 'ProductController');

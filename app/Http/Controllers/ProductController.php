@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('ecom.product');
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('ecom.addproduct');
     }
 
     /**
@@ -35,7 +35,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::create([
+            'namaProduk' => $request->input('namaProduct'),
+            'dimensi' => $request->input('dimensi'),
+            'deskripsi' => $request->input('deskripsi'),
+            'jumlahLike' => '0',
+            'stock' => $request->input('stock'),
+            'idJenis' => '3',
+            'harga' => $request->input('harga'),
+        ]);
+
+        if($product) {
+            return redirect()->route('product.index');
+        }
+
+        return back()->withInput();
     }
 
     /**
