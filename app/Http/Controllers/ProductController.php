@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('ecom.product');
+        $product_list = Product::all();
+        return view('ecom.index', ['product_list' => $product_list ]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('ecom.addproduct');
+        return view('ecom.product.create');
     }
 
     /**
@@ -54,7 +55,7 @@ class ProductController extends Controller
         }
 
         if($product) {
-            return redirect()->route('product.index');
+            return redirect()->route('ecom.product.show', ['product' => $product->id]);
         }
 
         return back()->withInput();

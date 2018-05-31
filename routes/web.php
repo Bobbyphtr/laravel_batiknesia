@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('ecom.index');
-});
+Route::get('/', 'ProductController@index');
 
 Auth::routes();
 
