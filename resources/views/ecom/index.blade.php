@@ -49,24 +49,25 @@
           </div>
 
           <div class="row">
-            @for ($i=1; $i <= 10; $i++)
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="{{ url('product_view') }}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="{{url('product_view')}}">Item {{ $i }}</a>
-                  </h4>
-                  <h5>Rp 50.000</h5>
-                  <p class="card-text">Deskripsi produk batik.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            @endfor
+            @if (!empty($product_list))
+                @foreach ($product_list as $product)
+                  <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                      <a href="{{ URL::action('ProductController@show', $product->idProduct) }}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <a href="{{URL::action('ProductController@show', $product->idProduct)}}">IDR {{ $product->namaProduk }}</a>
+                        </h4>
+                        <h5>{{ $product->harga }}</h5>
+                        <p class="card-text">{{ $product->deskripsi }}</p>
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
+            @endif
             {{-- <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
                 <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
