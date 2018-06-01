@@ -11,9 +11,9 @@
 
           <h1 class="my-4">Batiknesia</h1>
           <div class="list-group">
-            <a href="#" class="list-group-item">Category 1</a>
-            <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 3</a>
+            @foreach ($jenis_list as $jenis)
+              <a href="{{URL::action('ProductController@filter', $jenis->idJenis)}}" class="list-group-item">{{$jenis->namaJenis}}</a>
+            @endforeach
           </div>
 
         </div>

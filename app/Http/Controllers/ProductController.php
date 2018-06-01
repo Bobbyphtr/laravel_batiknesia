@@ -131,6 +131,9 @@ class ProductController extends Controller
      */
     public function filter()
     {
-        return view('ecom.index');
+      $product_list = Product::all();
+      $gambar_list = Gambar::all();
+      $jenis_list = Jenis::all();
+      return view('ecom.index', ['product_list' => $product_list, 'gambar_list' => $gambar_list, 'jenis_list' => $jenis_list]);
     }
 }

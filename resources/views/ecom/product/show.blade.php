@@ -30,7 +30,7 @@
           <ul>
             <li>Stok     : {{$product->stock}}</li>
             <li>Dimensi  : {{$product->dimensi}}</li>
-            <li>Jenis    : namaJenis</li>
+            <li>Jenis    : {{$namaJenis->namaJenis}}</li>
           </ul>
         </div>
 
