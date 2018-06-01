@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="namaProduct" class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+                            <label for="namaProduct" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="namaProduct" type="text" class="form-control{{ $errors->has('namaProduct') ? ' is-invalid' : '' }}" name="namaProduct" value="{{ old('namaProduct') }}" required autofocus>
@@ -26,7 +26,26 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="dimensi" class="col-md-4 col-form-label text-md-right">{{ __('Product Dimension') }}</label>
+                            <label for="idJenis" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+
+                            <div class="col-md-6">
+                              <select class="form-control" name="idJenis">
+                                    <option>-- Category --</option>
+                                    @foreach ($jenis_list as $category)
+                                      <option value="{{$category->idJenis}}">{{$category->namaJenis}}</option>
+                                    @endforeach
+                              </select>
+
+                                @if ($errors->has('idJenis'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('idJenis') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="dimensi" class="col-md-4 col-form-label text-md-right">{{ __('Dimension') }}</label>
 
                             <div class="col-md-6">
                                 <input id="dimensi" type="text" class="form-control{{ $errors->has('dimensi') ? ' is-invalid' : '' }}" name="dimensi" value="{{ old('dimensi') }}" required>
@@ -40,25 +59,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="deskripsi" class="col-md-4 col-form-label text-md-right">{{ __('Product Description') }}</label>
+                            <label for="deskripsi" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
                                 <textarea placeholder="Enter description" style="resize: vertical" name="deskripsi" rows="5"
                                 spellcheck="false" class="form-control autosize-target text-left"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="idJenis" class="col-md-4 col-form-label text-md-right">{{ __('Product Type') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="idJenis" type="text" class="form-control{{ $errors->has('idJenis') ? ' is-invalid' : '' }}" name="idJenis" value="{{ old('idJenis') }}" required>
-
-                                @if ($errors->has('idJenis'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('idJenis') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -77,7 +82,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Product Price') }}</label>
+                            <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
                                 <input id="harga" type="number" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" value="{{ old('harga') }}" required>
@@ -91,7 +96,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="gambar" class="col-md-4 col-form-label text-md-right">{{ __('Product Picture') }}</label>
+                            <label for="gambar" class="col-md-4 col-form-label text-md-right">{{ __('Picture') }}</label>
 
                             <div class="col-md-6">
                                 <input type="file" name="gambar">

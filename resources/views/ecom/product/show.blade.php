@@ -9,7 +9,6 @@
       <!-- Portfolio Item Heading -->
       <h1 class="my-4">
         {{$product->namaProduk}}
-        <small>Jenis : {{$product->idJenis}}</small>
       </h1>
 
       <!-- Portfolio Item Row -->
