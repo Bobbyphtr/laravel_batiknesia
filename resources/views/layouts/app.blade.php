@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel" id="navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/product') }}">
                     Batiknesia
@@ -44,6 +44,7 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
+                            <li><a class="nav-link" href="{{ route('product.create') }}">{{ __('Add Product') }}</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nama }} <span class="caret"></span>
@@ -67,7 +68,20 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <script>
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+              if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+              } else {
+                document.getElementById("navbar").style.top = "-50px";
+              }
+              prevScrollpos = currentScrollPos;
+            }
+        </script>
+
+        <main class="py-5">
             @yield('content')
         </main>
     </div>

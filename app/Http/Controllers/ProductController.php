@@ -53,7 +53,7 @@ class ProductController extends Controller
         if($request->hasFile('gambar')) {
             $gambarProduk = new Gambar;
             $gambar = $request->file('gambar');
-            $gambarName = $gambar->getClientOriginalName().'.'.$gambar->getClientOriginalExtension();
+            $gambarName = $gambar->getClientOriginalName();
 
             $destination_path = 'img/products';
             $upload_path = $destination_path. "/" . $gambarName;
