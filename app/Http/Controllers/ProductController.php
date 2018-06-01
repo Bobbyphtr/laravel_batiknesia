@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $jenis_list = Jenis::get()->pluck('namaJenis');
+        $jenis_list = Jenis::all();
         return view('ecom.product.create', ['jenis_list' => $jenis_list]);
     }
 
