@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Gambar;
+use App\Jenis;
 use Illuminate\Http\Request;
 
 use Storage;
@@ -29,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $jenis_list = Jenis::all();
+        $jenis_list = Jenis::get()->pluck('namaJenis');
         return view('ecom.product.create', ['jenis_list' => $jenis_list]);
     }
 

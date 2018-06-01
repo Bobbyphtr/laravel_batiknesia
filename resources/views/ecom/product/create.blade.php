@@ -49,6 +49,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="idJenis" class="col-md-4 col-form-label text-md-right">{{ __('Product Type') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="idJenis" type="text" class="form-control{{ $errors->has('idJenis') ? ' is-invalid' : '' }}" name="idJenis" value="{{ old('idJenis') }}" required>
+
+                                @if ($errors->has('idJenis'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('idJenis') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="stock" class="col-md-4 col-form-label text-md-right">{{ __('Stock') }}</label>
 
                             <div class="col-md-6">
