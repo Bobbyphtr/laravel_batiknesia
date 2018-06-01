@@ -29,7 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('ecom.product.create');
+        $jenis_list = Jenis::all();
+        return view('ecom.product.create', ['jenis_list' => $jenis_list]);
     }
 
     /**
@@ -46,7 +47,7 @@ class ProductController extends Controller
             'deskripsi' => $request->input('deskripsi'),
             'jumlahLike' => '0',
             'stock' => $request->input('stock'),
-            'idJenis' => '3',
+            'idJenis' => $request->input('idJenis'),
             'harga' => $request->input('harga'),
         ]);
 

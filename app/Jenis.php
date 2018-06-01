@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jenis extends Model
 {
+  protected $primaryKey = 'idJenis';
+
   protected $fillable = [
       'namaJenis',
   ];
