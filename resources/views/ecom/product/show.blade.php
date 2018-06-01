@@ -34,8 +34,20 @@
           </ul>
 
           <div class="box-button">
-            <button href="" type="button" class="my-3 col-md-4 btn btn-success">Edit</button>
-            <button href="" type="button" class="col-md-4 btn btn-warning">Delete</button>
+            <a class="btn btn-primary" href="/product/{{ $product->idProduct }}/edit">Edit</a>
+            <a href="#" class="btn btn-danger"
+                    onclick="
+                        var result = confirm('Are you sure you wish to delete {{$product->namaProduk}}?');
+                            if(result) {
+                                event.preventDefault();
+                                document.getElementById('delete-form').submit();
+                            }
+                    ">
+                    Delete</a>
+                    <form id="delete-form" action="{{ route('product.destroy', [$product->idProduct]) }}" method="POST" style="display: none;">
+                        <input type="hidden" name="_method" value="delete">
+                        {{ csrf_field() }}
+                    </form>
           </div>
         </div>
 

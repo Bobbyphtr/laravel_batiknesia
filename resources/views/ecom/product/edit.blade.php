@@ -8,15 +8,16 @@
                 <div class="card-header">{{ __('Add New Product') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('product.update', $product->idProduct) }}" enctype="multipart/form-data">
                         @csrf
+
+                        <input type="hidden" name="_method" value="put">
 
                         <div class="form-group row">
                             <label for="namaProduct" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="namaProduct" type="text" class="form-control{{ $errors->has('namaProduct') ? ' is-invalid' : '' }}" name="namaProduct" value="{{ old('namaProduct') }}" required autofocus>
-
+                                <input id="namaProduct" type="text" class="form-control{{ $errors->has('namaProduct') ? ' is-invalid' : '' }}" name="namaProduct" value="{{ $product->namaProduk }}" required autofocus>
                                 @if ($errors->has('namaProduct'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('namaProduct') }}</strong>
@@ -32,7 +33,11 @@
                               <select class="form-control" name="idJenis">
                                     <option>-- Category --</option>
                                     @foreach ($jenis_list as $category)
-                                      <option value="{{$category->idJenis}}">{{$category->namaJenis}}</option>
+                                        @if($category->idJenis = $product->idJenis)
+                                            <option value="{{$category->idJenis}}" selected>{{$category->namaJenis}}</option>
+                                        @else
+                                            <option value="{{$category->idJenis}}">{{$category->namaJenis}}</option>
+                                        @endif
                                     @endforeach
                               </select>
 
@@ -48,7 +53,7 @@
                             <label for="dimensi" class="col-md-4 col-form-label text-md-right">{{ __('Dimension') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dimensi" type="text" class="form-control{{ $errors->has('dimensi') ? ' is-invalid' : '' }}" name="dimensi" value="{{ old('dimensi') }}" required>
+                                <input id="dimensi" type="text" class="form-control{{ $errors->has('dimensi') ? ' is-invalid' : '' }}" name="dimensi" value="{{ $product->dimensi }}" required>
 
                                 @if ($errors->has('dimensi'))
                                     <span class="invalid-feedback">
@@ -63,7 +68,7 @@
 
                             <div class="col-md-6">
                                 <textarea placeholder="Enter description" style="resize: vertical" name="deskripsi" rows="5"
-                                spellcheck="false" class="form-control autosize-target text-left"></textarea>
+                                spellcheck="false" class="form-control autosize-target text-left">{{ $product->deskripsi }}</textarea>
                             </div>
                         </div>
 
@@ -71,7 +76,7 @@
                             <label for="stock" class="col-md-4 col-form-label text-md-right">{{ __('Stock') }}</label>
 
                             <div class="col-md-6">
-                                <input id="stock" type="number" class="form-control{{ $errors->has('stock') ? ' is-invalid' : '' }}" name="stock" value="{{ old('stock') }}" required>
+                                <input id="stock" type="number" class="form-control{{ $errors->has('stock') ? ' is-invalid' : '' }}" name="stock" value="{{ $product->stock }}" required>
 
                                 @if ($errors->has('stock'))
                                     <span class="invalid-feedback">
@@ -85,7 +90,7 @@
                             <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="harga" type="number" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" value="{{ old('harga') }}" required>
+                                <input id="harga" type="number" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" value="{{ $product->harga }}" required>
 
                                 @if ($errors->has('harga'))
                                     <span class="invalid-feedback">
@@ -111,7 +116,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register Product') }}
+                                    {{ __('Update Product') }}
                                 </button>
                             </div>
                         </div>

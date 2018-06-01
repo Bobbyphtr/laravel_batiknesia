@@ -69,10 +69,10 @@ class ProductController extends Controller
         }
 
         if($product) {
-            return redirect()->route('product.show', $product);
-        }
+            return redirect()->route('product.show', $product)->with('success', 'Product ' . $product->namaProduk . ' sucessfully created.');
 
-        return back()->withInput();
+        return back()->withInput()->with('Error', 'Product ' . $product->namaProduk . ' could not be created.');
+        }
     }
 
     /**
@@ -83,7 +83,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-
         $product = Product::find($product->idProduct);
         $gambar = Gambar::find($product->idProduct);
         $namaJenis = Jenis::find($product->idJenis);
@@ -99,7 +98,9 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
-        dd(masuk);
+        $jenis_list = Jenis::all();
+        $product = Product::find($product->idProduct);
+        return view('ecom.product.edit', ['product' => $product ,'jenis_list' => $jenis_list]);
     }
 
     /**
@@ -111,7 +112,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $productUpdate = Product::where('idProduct', $product->idProduct)->update([
+            'namaProduk' => $request->input('namaProduct'),
+            'dimensi' => $request->input('dimensi'),
+            'deskripsi' => $request->input('deskripsi'),
+            'jumlahLike' => '0',
+            'stock' => $request->input('stock'),
+            'idJenis' => $request->input('idJenis'),
+            'harga' => $request->input('harga'),
+        ]);
+
+        $gambar = $request->file('gambar');
+        $gambarName = $gambar->getClientOriginalName();
+
+        $destination_path = 'img/products';
+        $upload_path = $destination_path. "/" . $gambarName;
+        $gambar->move($destination_path, $gambarName);
+
+        $gambarUpdate = Gambar::where('idProduct', $product->idProduct)->update([
+            'gambar' => $upload_path,
+        ]);
+
+        if ($productUpdate) {
+            return redirect()->route('product.index')->with('success', 'Product ' . $product->namaProduk . ' sucessfully updated.');
+        }
+
+        return back()->withInput()->with('error', 'Product ' . $product->namaProduk . ' could not be updated.');
     }
 
     /**
@@ -122,7 +148,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $findProduct = Product::find( $product->idProduct );
+        if($findProduct->delete()) {
+            return redirect()->route('product.index')->with('success', 'Product ' . $product->namaProduk . ' sucessfully deleted.');
+        }
+        return back()->withInput()->with('error', 'Product ' . $product->namaProduk . ' could not be deleted.');
     }
 
     /**

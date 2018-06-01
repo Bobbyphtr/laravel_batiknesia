@@ -80,8 +80,9 @@
               prevScrollpos = currentScrollPos;
             }
         </script>
-
         <main class="py-5">
+            @include('partials.success')
+            @include('partials.errors')
             @yield('content')
         </main>
     </div>
