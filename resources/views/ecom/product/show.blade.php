@@ -33,22 +33,27 @@
             <li>Jenis    : {{$namaJenis->namaJenis}}</li>
           </ul>
 
-          <div class="box-button">
-            <a class="col-md-4 btn btn-success" href="/product/{{ $product->idProduct }}/edit">Edit</a>
-            <a href="#" class="col-md-4 btn btn-danger"
-                    onclick="
-                        var result = confirm('Are you sure you wish to delete {{$product->namaProduk}}?');
-                            if(result) {
-                                event.preventDefault();
-                                document.getElementById('delete-form').submit();
-                            }
-                    ">
-                    Delete</a>
-                    <form id="delete-form" action="{{ route('product.destroy', [$product->idProduct]) }}" method="POST" style="display: none;">
-                        <input type="hidden" name="_method" value="delete">
-                        {{ csrf_field() }}
-                    </form>
-          </div>
+          @guest
+          @else
+              <div class="box-button">
+                <a class="col-md-4 btn btn-success" href="/product/{{ $product->idProduct }}/edit">Edit</a>
+                <a href="#" class="col-md-4 btn btn-danger"
+                        onclick="
+                            var result = confirm('Are you sure you wish to delete {{$product->namaProduk}}?');
+                                if(result) {
+                                    event.preventDefault();
+                                    document.getElementById('delete-form').submit();
+                                }
+                        ">
+                        Delete</a>
+                        <form id="delete-form" action="{{ route('product.destroy', [$product->idProduct]) }}" method="POST" style="display: none;">
+                            <input type="hidden" name="_method" value="delete">
+                            {{ csrf_field() }}
+                        </form>
+              </div>
+          @endguest
+
+
         </div>
 
       </div>
