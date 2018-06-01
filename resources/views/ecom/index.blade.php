@@ -10,8 +10,8 @@
 
         <div class="col-lg-3">
 
-          <h1 class="my-4">Batiknesia</h1>
-          <div class="list-group">
+          <h1 class="my-4" style="position:fixed;">Batiknesia</h1>
+          <div class="list-group" style="position:fixed; top : 20%;">
             @foreach ($jenis_list as $jenis)
               <a href="{{URL::action('ProductController@filter', $jenis->idJenis)}}" class="list-group-item">{{$jenis->namaJenis}}</a>
             @endforeach
