@@ -129,11 +129,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function filter()
+    public function filter($idJenis)
     {
-      $product_list = Product::all();
-      $gambar_list = Gambar::all();
-      $jenis_list = Jenis::all();
-      return view('ecom.index', ['product_list' => $product_list, 'gambar_list' => $gambar_list, 'jenis_list' => $jenis_list]);
+        $product_list = Product::where('idJenis', $idJenis)->get();
+        $gambar_list = Gambar::all();
+        $jenis_list = Jenis::all();
+        return view('ecom.index', ['product_list' => $product_list, 'gambar_list' => $gambar_list, 'jenis_list' => $jenis_list]);
     }
 }

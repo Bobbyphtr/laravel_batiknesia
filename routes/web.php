@@ -19,4 +19,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('product', 'ProductController');
 
-Route::get('filter', 'ProductController@filter');
+Route::get('filter/{idProduct}', 'ProductController@filter');
