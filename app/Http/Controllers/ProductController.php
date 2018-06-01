@@ -123,4 +123,14 @@ class ProductController extends Controller
     {
         //
     }
+
+    /**
+     * Return products specific to the category selected.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filter()
+    {
+        return view('ecom.index');
+    }
 }
