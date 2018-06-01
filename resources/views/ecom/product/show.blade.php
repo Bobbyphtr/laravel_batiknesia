@@ -32,6 +32,11 @@
             <li>Dimensi  : {{$product->dimensi}}</li>
             <li>Jenis    : {{$namaJenis->namaJenis}}</li>
           </ul>
+
+          <div class="box-button">
+            <button href="" type="button" class="my-3 col-md-4 btn btn-success">Edit</button>
+            <button href="" type="button" class="col-md-4 btn btn-warning">Delete</button>
+          </div>
         </div>
 
       </div>
