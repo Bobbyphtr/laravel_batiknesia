@@ -19,10 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel" id="navbar">
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark navbar-laravel" id="navbar" style="background-color: #01579B;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/product') }}">
                     Batiknesia

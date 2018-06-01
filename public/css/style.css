@@ -1,0 +1,13 @@
+body
+{
+  background-color:  #E1F5FE;
+}
+#footer
+{
+  position: absolute;
+  background-color: #01579B;
+  font-size: 0.9em;
+  height: 50px;
+  text-align: center;
+  padding-top: 20px;
+}
