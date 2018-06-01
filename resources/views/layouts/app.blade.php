@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Batiknesia') }}</title>
+    <title>Batiknesia</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -81,8 +81,6 @@
             }
         </script>
         <main class="py-5">
-            @include('partials.success')
-            @include('partials.errors')
             @yield('content')
         </main>
     </div>

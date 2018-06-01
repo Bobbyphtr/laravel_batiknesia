@@ -4,6 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+          @include('partials.success')
+          @include('partials.errors')
             <div class="card">
                 <div class="card-header">{{ __('Add New Product') }}</div>
 

@@ -4,7 +4,8 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-
+      @include('partials.success')
+      @include('partials.errors')
       <div class="row">
 
         <div class="col-lg-3">

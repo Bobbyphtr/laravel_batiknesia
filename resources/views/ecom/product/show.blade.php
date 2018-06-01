@@ -34,8 +34,8 @@
           </ul>
 
           <div class="box-button">
-            <a class="btn btn-primary" href="/product/{{ $product->idProduct }}/edit">Edit</a>
-            <a href="#" class="btn btn-danger"
+            <a class="col-md-4 btn btn-success" href="/product/{{ $product->idProduct }}/edit">Edit</a>
+            <a href="#" class="col-md-4 btn btn-danger"
                     onclick="
                         var result = confirm('Are you sure you wish to delete {{$product->namaProduk}}?');
                             if(result) {
