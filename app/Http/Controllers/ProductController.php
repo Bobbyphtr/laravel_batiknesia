@@ -20,7 +20,8 @@ class ProductController extends Controller
     {
         $product_list = Product::all();
         $gambar_list = Gambar::all();
-        return view('ecom.index', ['product_list' => $product_list, 'gambar_list' => $gambar_list]);
+        $jenis_list = Jenis::all();
+        return view('ecom.index', ['product_list' => $product_list, 'gambar_list' => $gambar_list, 'jenis_list' => $jenis_list]);
     }
 
     /**
@@ -85,7 +86,8 @@ class ProductController extends Controller
 
         $product = Product::find($product->idProduct);
         $gambar = Gambar::find($product->idProduct);
-        return view('ecom.product.show', ['product' => $product, 'gambar' => $gambar]);
+        $namaJenis = Jenis::find($product->idJenis);
+        return view('ecom.product.show', ['product' => $product, 'gambar' => $gambar, 'namaJenis' => $namaJenis]);
     }
 
     /**
