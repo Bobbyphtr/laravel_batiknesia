@@ -69,7 +69,7 @@
                         <p class="card-text">{{ $product->deskripsi }}</p>
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                        <a class="col-md-4 btn btn-success" href="/product/{{ $product->idProduct }}" style="background-color: #01579B";>Details</a>
                       </div>
                     </div>
                   </div>
