@@ -84,6 +84,10 @@
         <main class="py-5">
             @yield('content')
         </main>
+
+        <div id="footer" class="container-fluid center text-white" style="position: fixed; width: 100%; bottom:0; left: 0;">
+              <p style="margin-bottom: 0rem">&copy;2018 Bobby Yafet Marco</p>
+        </div>
     </div>
 </body>
 </html>

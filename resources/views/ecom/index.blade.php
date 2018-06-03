@@ -86,9 +86,5 @@
       <!-- /.row -->
 
     </div>
-
-    <div id="footer" class="container-fluid center text-white">
-        <p style="margin-bottom: 0rem">&copy;2018 Bobby Yafet Marco</p>
-    </div>
     <!-- /.container -->
   @endsection
