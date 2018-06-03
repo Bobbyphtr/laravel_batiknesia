@@ -69,7 +69,7 @@
                         <p class="card-text">{{ $product->deskripsi }}</p>
                       </div>
                       <div class="card-footer">
-                        <a class="col-md-4 btn btn-success" href="/product/{{ $product->idProduct }}" style="background-color: #01579B";>Details</a>
+                        <a class="col-md-12 btn btn-success" href="/product/{{ $product->idProduct }}" style="background-color: #01579B";>Details</a>
                       </div>
                     </div>
                   </div>
